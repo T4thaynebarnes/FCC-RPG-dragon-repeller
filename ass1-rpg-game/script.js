@@ -15,6 +15,16 @@ const locations = [
     "button functions": [goStore, goCave, fightDragon],
     text: "You are in the town square. You see a sign that says Store.",
   },
+  {
+    name: "store",
+    "button text": [
+      "Buy 10 health (10 gold)",
+      "Buy weapon (30 gold)",
+      "Go to town square",
+    ],
+    "button functions": [buyHealth, buyWeapon, goTown],
+    text: "You enter the store.",
+  },
 ];
 // declaring variables to grab onto html elements in the dom to manipulate them
 const button1 = document.querySelector("#button1");
