@@ -11,7 +11,7 @@ let inventory = ["🩼"];
 const locations = [
   {
     name: "town square",
-    "button text": [],
+    "button text": ["Go to store", "Go to cave", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
     text: "You are in the town square. You see a sign that says Store.",
   },
@@ -39,15 +39,8 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 // function for logic of game
-function goTown() {
-  text.innerText =
-    "You are in the town square. You see a sign that says Store.";
-  button1.innerText = "Go to store";
-  button1.onclick = goStore;
-  button2.innerText = "Go to cave";
-  button2.onclick = goCave;
-  button3.innerText = "Fight dragon";
-  button3.onclick = fightDragon;
+function goTown(locations) {
+  update();
 }
 function goStore() {
   text.innerText = "You enter the store.";
@@ -68,7 +61,23 @@ function fightDragon() {
 }
 function buyHealth() {}
 function buyWeapon() {}
-function update(location) {}
+function update(location) {
+  text.innerText =
+    "You are in the town square. You see a sign that says Store.";
+  button1.innerText = "Go to store";
+  button1.onclick = goStore;
+  button2.innerText = "Go to cave";
+  button2.onclick = goCave;
+  button3.innerText = "Fight dragon";
+  button3.onclick = fightDragon;
+  text.innerText = "You enter the store.";
+  button1.innerText = "Buy 10 💖 for 10 🪙";
+  button1.onclick = buyHealth;
+  button2.innerText = "Buy 🗡️ (30 🪙)";
+  button2.onclick = buyWeapon;
+  button3.innerText = "Go to town square";
+  button3.onclick = goTown;
+}
 
 // initialize buttons
 button1.onclick = goStore;
