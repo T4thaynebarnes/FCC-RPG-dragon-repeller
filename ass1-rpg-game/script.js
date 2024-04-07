@@ -103,18 +103,16 @@ const fightDragon = () => {
 const attack = () => {
   // display monsters attack
   text.innerText = "The " + monsters[fighting].name + " attacks.";
-  console.log("value of monsters[fighting]", monsters[fighting]);
   text.innerText +=
     " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= monsters[fighting].level;
-  monsterHealth =
-    monsterHealth -
-    weapons[currentWeapon].power +
-    Math.floor(Math.random() * xp) +
-    1;
-  console.log(monsterHealth);
+  monsterHealth -=
+    weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
+  console.log("Weapon power:", weapons[currentWeapon].power);
+  console.log("Random number:", Math.floor(Math.random() * xp) + 1);
+  console.log("monster health:", monsterHealth);
   if (health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
@@ -142,7 +140,7 @@ const sellWeapon = () => {
 const goFight = () => {
   // calling 3rd indice (which is an object) in locations array below
   update(locations[3]);
-  let monsterHealth = monsters[fighting].health;
+  monsterHealth = monsters[fighting].health;
   console.log("health of current monster", monsters[fighting].health);
   //   this displays monster stats element
   monsterStats.style.display = "block";
