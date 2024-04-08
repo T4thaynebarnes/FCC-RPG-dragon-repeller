@@ -116,7 +116,8 @@ const attack = () => {
   if (health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
-    defeatMonster();
+    if(fighting === 2){
+    winGame()}else{defeatMonster()}
   }
 };
 const dodge = () => {
@@ -159,7 +160,21 @@ const defeatMonster = () => {
   //   calling update() to go be placed back in the cave un harrassed
   update(locations[4]);
 };
-const lose = () => {};
+const lose = () => {
+  update(locations[5]);
+};
+const restart = () => {
+  xp = 0;
+  health = 100;
+  gold = 50;
+  currentWeapon = 0;
+  
+  inventory = ['🩼'];
+  goldText.innerText = gold;
+  healthText.innerText = health;
+  xpText.innerText = xp;
+  goTown();
+}
 // testing function used to log data being passed
 const testing = () => {
   //   console.log("testing: ", locations[1], "", monsters[fighting], "");
@@ -209,7 +224,12 @@ const locations = [
     ],
     "button functions": [goTown, goTown, goTown],
     text: "The monster screams Arg! as it dies. You gain experience points and find gold.",
-  },
+  },{
+    name: "lose",
+    "button text": ["REPLAY?","REPLAY?","REPLAY?"],
+    "button functions":[restart, restart,restart],
+    text: "You have been killed in battle"
+  }
 ];
 // weapons array holding purchased weapons
 const weapons = [
