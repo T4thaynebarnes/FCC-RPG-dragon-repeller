@@ -244,6 +244,12 @@ const locations = [
     "button functions": [restart, restart, restart],
     text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;",
   },
+  {
+    name: "lose",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You die. &#x2620;",
+  },
 ];
 // weapons array holding purchased weapons
 const weapons = [
