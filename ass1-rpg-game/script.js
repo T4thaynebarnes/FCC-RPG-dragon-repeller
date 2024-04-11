@@ -116,8 +116,11 @@ const attack = () => {
   if (health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
-    if(fighting === 2){
-    winGame()}else{defeatMonster()}
+    if (fighting === 2) {
+      winGame();
+    } else {
+      defeatMonster();
+    }
   }
 };
 const dodge = () => {
@@ -168,13 +171,17 @@ const restart = () => {
   health = 100;
   gold = 50;
   currentWeapon = 0;
-  
-  inventory = ['🩼'];
+
+  inventory = ["🩼"];
   goldText.innerText = gold;
   healthText.innerText = health;
   xpText.innerText = xp;
   goTown();
-}
+};
+// win condition
+const winGame = () => {
+  update(locations[6]);
+};
 // testing function used to log data being passed
 const testing = () => {
   //   console.log("testing: ", locations[1], "", monsters[fighting], "");
@@ -224,12 +231,19 @@ const locations = [
     ],
     "button functions": [goTown, goTown, goTown],
     text: "The monster screams Arg! as it dies. You gain experience points and find gold.",
-  },{
+  },
+  {
     name: "lose",
-    "button text": ["REPLAY?","REPLAY?","REPLAY?"],
-    "button functions":[restart, restart,restart],
-    text: "You have been killed in battle"
-  }
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You have been killed in battle",
+  },
+  {
+    name: "win",
+    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
+    "button functions": [restart, restart, restart],
+    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;",
+  },
 ];
 // weapons array holding purchased weapons
 const weapons = [
