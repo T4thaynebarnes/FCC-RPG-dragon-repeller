@@ -25,6 +25,8 @@ const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
+const cat = { name: "whiskers", "Number of legs": 4 };
+console.log(cat.whiskers);
 
 // function for logic of game
 function goTown() {
@@ -105,7 +107,7 @@ const attack = () => {
   text.innerText = "The " + monsters[fighting].name + " attacks.";
   text.innerText +=
     " You attack it with your " + weapons[currentWeapon].name + ".";
-  health -= monsters[fighting].level;
+  health -= getMonsterAttackValue(monsters[fighting].level);
   monsterHealth -=
     weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
   healthText.innerText = health;
@@ -122,6 +124,11 @@ const attack = () => {
       defeatMonster();
     }
   }
+};
+// determines monster attack damage
+const getMonsterAttackValue = (level) => {
+  const hit = level * 5 - Math.floor(Math.random() * xp);
+  console.log(hit);
 };
 const dodge = () => {
   text.innerText = "You dodge the attack from the " + monsters[fighting].name;
@@ -199,8 +206,8 @@ const locations = [
   {
     name: "store",
     "button text": [
-      "Buy 10 health (10 gold)",
-      "Buy weapon (30 gold)",
+      "Buy 10 health (10 🪙)",
+      "Buy weapon (30 🪙)",
       "Go to town square",
     ],
     "button functions": [buyHealth, buyWeapon, goTown],
