@@ -108,8 +108,14 @@ const attack = () => {
   text.innerText +=
     " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
-  monsterHealth -=
-    weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+  if (isMonsterHit()) {
+    isMonsterHit();
+    monsterHealth -=
+      weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+  } else {
+    text.innerText += " you miss";
+  }
+
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
   console.log("Weapon power:", weapons[currentWeapon].power);
@@ -129,6 +135,12 @@ const attack = () => {
 const getMonsterAttackValue = (level) => {
   const hit = level * 5 - Math.floor(Math.random() * xp);
   console.log(hit);
+  // ternary operator same as if/else statement
+  return hit > 0 ? hit : 0;
+};
+// determines if attack landed or not
+const isMonsterHit = () => {
+  return Math.random() > 0.2 || health < 20;
 };
 const dodge = () => {
   text.innerText = "You dodge the attack from the " + monsters[fighting].name;
