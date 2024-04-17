@@ -105,6 +105,7 @@ const fightDragon = () => {
 const attack = () => {
   // display monsters attack
   text.innerText = "The " + monsters[fighting].name + " attacks.";
+  // you can string text and variables together with +
   text.innerText +=
     " You attack it with your " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
@@ -129,6 +130,11 @@ const attack = () => {
     } else {
       defeatMonster();
     }
+  }
+  if (Math.random() <= 0.1 && inventory.length !== 1) {
+    // template literals to string variables and text together
+    text.innerText += ` Your ${inventory.pop} breaks`;
+    currentWeapon--;
   }
 };
 // determines monster attack damage
@@ -201,6 +207,19 @@ const restart = () => {
 const winGame = () => {
   update(locations[6]);
 };
+const easterEgg = () => {
+  update(locations[7]);
+};
+// older way of writing functions in javascript below
+function pick(guess) {
+  const numbers = [];
+}
+const pickTwo = () => {
+  pick(2);
+};
+const pickEight = () => {
+  pick(8);
+};
 // testing function used to log data being passed
 const testing = () => {
   //   console.log("testing: ", locations[1], "", monsters[fighting], "");
@@ -268,6 +287,12 @@ const locations = [
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
     text: "You die. &#x2620;",
+  },
+  {
+    name: "easter egg",
+    "button text": ["2", "8", "Go to town square?"],
+    "button functions": [pickTwo, pickEight, goTown],
+    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!",
   },
 ];
 // weapons array holding purchased weapons
