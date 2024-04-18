@@ -213,6 +213,26 @@ const easterEgg = () => {
 // older way of writing functions in javascript below
 function pick(guess) {
   const numbers = [];
+  while (numbers.length < 10) {
+    // this uses push method to add a random integer between 1-10 to the end of numbers array
+    numbers.push(Math.floor(Math.random() * 11));
+  }
+  text.innerText = `You picked ${guess}! Here are the random numbers`;
+  for (let i = 0; i < 10; i++) {
+    text.innerText += numbers[i] + "\n";
+  }
+  if (numbers.includes(guess)) {
+    text.innerText += "Right! You win 20 gold!";
+    gold += 20;
+    goldText.innerText = gold + 20;
+  } else {
+    text.innerText += "Wrong! You lose 10 health!";
+    health -= 10;
+    healthText.innerText = health - 10;
+    if (health <= 0) {
+      lose();
+    }
+  }
 }
 const pickTwo = () => {
   pick(2);
@@ -226,7 +246,7 @@ const testing = () => {
 };
 // could not initiate the data in the objects below had to move code to bottom
 // *****************ARRAYS STORED BELOW ********************
-// locations array which holds objects with the data we need
+// locations array which holds objects with the data
 const locations = [
   {
     name: "town square",
@@ -262,12 +282,8 @@ const locations = [
   },
   {
     name: "kill monster",
-    "button text": [
-      "Go to town square",
-      "Go to town square",
-      "Go to town square",
-    ],
-    "button functions": [goTown, goTown, goTown],
+    "button text": ["Go to town square", "Go to town square", "Sacred Chamber"],
+    "button functions": [goTown, goTown, easterEgg],
     text: "The monster screams Arg! as it dies. You gain experience points and find gold.",
   },
   {
