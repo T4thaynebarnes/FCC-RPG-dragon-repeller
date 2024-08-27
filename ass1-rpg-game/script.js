@@ -16,6 +16,7 @@ const button1 = document.querySelector("#button1");
 
 const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
+const button4 = document.querySelector("#button4");
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
 const healthText = document.querySelector("#healthText");
@@ -40,6 +41,7 @@ function goStore() {
   button2.onclick = buyWeapon;
   button3.innerText = "Go to town square";
   button3.onclick = goTown;
+  button4.onclick = sellWeapon;
   update(locations[1]);
 }
 
@@ -84,10 +86,16 @@ function update(location) {
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
   button3.innerText = location["button text"][2];
+  button4.innerText = location["button text"][3];
   button1.onclick = location["button functions"][0];
   button2.onclick = location["button functions"][1];
   button3.onclick = location["button functions"][2];
+  button4.onclick = location["button functions"][3];
   text.innerText = location.text;
+  const imageName = locationImages[location.name];
+  if (imageName) {
+    const imagePath = `gameart/`;
+  }
 }
 // ES6 arrow function syntax
 const fightGoblin = () => {
@@ -215,7 +223,7 @@ function pick(guess) {
   const numbers = [];
   while (numbers.length < 10) {
     // this uses push method to add a random integer between 1-10 to the end of numbers array
-    numbers.push(Math.floor(Math.random() * 11));
+    numbers.push(Math.floor(Math.random() * 10) + 1);
   }
   text.innerText = `You picked ${guess}! Here are the random numbers`;
   for (let i = 0; i < 10; i++) {
@@ -242,10 +250,17 @@ const pickEight = () => {
 };
 // testing function used to log data being passed
 const testing = () => {
-  //   console.log("testing: ", locations[1], "", monsters[fighting], "");
+  console.log(
+    "testing: ",
+    locations[1],
+    "",
+    monsters[fighting],
+    "image location array ",
+    location.name
+  );
 };
 // could not initiate the data in the objects below had to move code to bottom
-// *****************ARRAYS STORED BELOW ********************
+// *****************an array of objects********************
 // locations array which holds objects with the data
 const locations = [
   {
@@ -260,10 +275,10 @@ const locations = [
       "Buy 10 health (10 🪙)",
       "Buy weapon (30 🪙)",
       "Go to town square",
+      "sell weapon",
     ],
-    "button functions": [buyHealth, buyWeapon, goTown],
-    // testing
-    // "button functions": [goTown],
+    "button functions": [buyHealth, buyWeapon, goTown, sellWeapon],
+
     text: "You enter the store.",
   },
   {
@@ -296,7 +311,7 @@ const locations = [
     name: "win",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
-    text: "You defeat the dragon! YOU WIN THE GAME! &#x1F389;",
+    text: "You defeat the dragon! YOU WIN THE GAME! ",
   },
   {
     name: "lose",
@@ -341,6 +356,12 @@ const monsters = [
     health: 300,
   },
 ];
+// object containing images for places
+const locationImages = {
+  "town square": "gameart/townsquare.jpeg",
+  store: "gameart/store.jpg",
+  cave: "gameart/cave.jpg",
+};
 // initialize buttons
 button1.onclick = goStore;
 button2.onclick = goCave;
