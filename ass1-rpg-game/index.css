@@ -45,7 +45,12 @@ button {
   border-radius: 2rem;
   padding: 2rem;
   margin: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
 }
-#gameArt{
-  
+button:hover {
+  background-color: #e93535;
+  background-image: linear-gradient(#f06a4d, #f03b3b);
+  transform: scale(1.35); /* Slightly increases the size of the button */
+}
+#gameArt {
 }

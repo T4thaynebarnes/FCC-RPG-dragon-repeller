@@ -94,6 +94,7 @@ function update(location) {
   text.innerText = location.text;
   const imageName = locationImages[location.name];
   if (imageName) {
+    let image = "/ass1-rpg-game/gameart/";
     const imagePath = `gameart/`;
   }
 }
@@ -216,7 +217,7 @@ const winGame = () => {
   update(locations[6]);
 };
 const easterEgg = () => {
-  update(locations[7]);
+  update(locations[8]);
 };
 // older way of writing functions in javascript below
 function pick(guess) {
