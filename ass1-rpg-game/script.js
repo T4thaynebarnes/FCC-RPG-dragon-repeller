@@ -266,7 +266,7 @@ const testing = () => {
 const locations = [
   {
     name: "town square",
-    "button text": ["Go to store", "Go to cave", "Fight dragon"],
+    "button text": ["Go to store", "Go to cave", "Fight dragon", ""],
     "button functions": [goStore, goCave, fightDragon],
     text: "You are in the town square. You see a sign that says Store.",
   },
@@ -284,10 +284,9 @@ const locations = [
   },
   {
     name: "cave",
-    "button text": ["Fight golbin", "Fight fanged beast", "Go to town square"],
+    "button text": ["Fight golbin", "Fight fanged beast", "Retreat!", ""],
     "button functions": [fightGoblin, fightBeast, goTown],
-    // testing
-    // "button functions": [goTown],
+
     text: "You enter the cave. You see some monsters.",
   },
   {
@@ -298,20 +297,25 @@ const locations = [
   },
   {
     name: "kill monster",
-    "button text": ["Go to town square", "Go to town square", "Sacred Chamber"],
-    "button functions": [goTown, goTown, easterEgg],
+    "button text": [
+      "Go to town square",
+      "Sacred Chamber",
+      "continue fighting!",
+      "",
+    ],
+    "button functions": [goTown, easterEgg, goCave],
     text: "The monster screams Arg! as it dies. You gain experience points and find gold.",
   },
   {
     name: "lose",
-    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
-    "button functions": [restart, restart, restart],
+    "button text": ["REPLAY?", "", "", ""],
+    "button functions": [restart],
     text: "You have been killed in battle",
   },
   {
     name: "win",
-    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
-    "button functions": [restart, restart, restart],
+    "button text": ["REPLAY?", "", "", ""],
+    "button functions": [restart],
     text: "You defeat the dragon! YOU WIN THE GAME! ",
   },
   {
