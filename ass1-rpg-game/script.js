@@ -291,7 +291,7 @@ const locations = [
   },
   {
     name: "fight",
-    "button text": ["⚔️", "🛡️", "🏃"],
+    "button text": ["⚔️", "🛡️", "🏃", ""],
     "button functions": [attack, dodge, goTown],
     text: "You are engaged in combat. Strength in battle brothers & sisters!",
   },
@@ -320,13 +320,13 @@ const locations = [
   },
   {
     name: "lose",
-    "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
-    "button functions": [restart, restart, restart],
-    text: "You die. &#x2620;",
+    "button text": ["REPLAY?", "", "", ""],
+    "button functions": [restart],
+    text: "You die. ☠️",
   },
   {
     name: "easter egg",
-    "button text": ["2", "8", "Go to town square?"],
+    "button text": ["2", "8", "Go to town square?", ""],
     "button functions": [pickTwo, pickEight, goTown],
     text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!",
   },
